@@ -1,0 +1,7 @@
+pod "g3m", :path => "../g3m.podspec"
+
+target "Demo" do
+end
+
+target "DemoTests" do
+end
