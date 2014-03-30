@@ -1,37 +1,31 @@
-#
-# Be sure to run `pod lib lint NAME.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
 Pod::Spec.new do |s|
   s.name             = "g3m"
   s.version          = "0.1.0"
-  s.summary          = "A short description of g3m."
+  s.summary          = "The multiplatform advanced visualization framewor"
   s.description      = <<-DESC
-                       An optional longer description of g3m
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       * The multiplatform advanced visualization framework
                        DESC
-  s.homepage         = "http://EXAMPLE/NAME"
-  s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "http://www.glob3mobile.com/"
   s.license          = 'MIT'
   s.author           = { "Mila Frerichs" => "mila.frerichs@gmail.com" }
-  s.source           = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/milafrerichs/g3m.git", :tag => "v0.1.0" }
   s.social_media_url = 'https://twitter.com/NAME'
 
-  # s.platform     = :ios, '5.0'
-  # s.ios.deployment_target = '5.0'
-  # s.osx.deployment_target = '10.7'
+  s.platform     = :ios, '7.1'
+  s.ios.deployment_target = '5.1'
   s.requires_arc = true
 
-  s.source_files = 'Classes'
-  s.resources = 'Assets/*.png'
+  s.xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'C_CODE',  'OTHER_LDFLAGS' => '-lObjC' }
+
+  s.source_files = 'Classes/ios/{Commons,Specific}/**/*.{hpp,cpp,h,mm,m,c}','Classes/ios/*.{h,m}'
+
+  s.resources = 'Classes/ios/Resources/**/*.*'
+
+  s.header_mappings_dir = 'Commons'
 
   s.ios.exclude_files = 'Classes/osx'
-  s.osx.exclude_files = 'Classes/ios'
   # s.public_header_files = 'Classes/**/*.h'
-  # s.frameworks = 'SomeFramework', 'AnotherFramework'
-  # s.dependency 'JSONKit', '~> 1.4'
+  s.frameworks = 'QuartzCore', 'CoreGraphics', 'CFNetwork', 'Foundation', 'GLKit', 'Security'
+  s.ios.library = 'icucore'
 end
+
